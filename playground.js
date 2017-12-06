@@ -1,3 +1,4 @@
+// Bubble Sort
 const bubbleSort = (nums) => {
   let swapped;
   do {
@@ -25,7 +26,6 @@ const insertionSort = (nums) => {
 };
 
 // Merge Sort
-
 const stitch = (left, right) => {
   const results = [];
 
@@ -57,6 +57,25 @@ const mergeSort = (nums) => {
   return stitch(mergeSort(left), mergeSort(right));
 };
 
+// Quick Sort
+const quickSort = (nums) => {
+  if (nums.length <= 1) return nums;
+
+  const pivot = nums[nums.length - 1];
+  const left = [];
+  const right = [];
+
+  for (let i = 0; i < nums.length - 1; i++) {
+    if (nums[i] < pivot) {
+      left.push(nums[i]);
+    } else {
+      right.push(nums[i]);
+    }
+  }
+
+  return quickSort(left).concat(pivot, quickSort(right));
+};
+
 const myNums = [5, 23, 2, 9, 44, 7, 6, 19];
 
-console.log(mergeSort(myNums));
+console.log(quickSort(myNums));
